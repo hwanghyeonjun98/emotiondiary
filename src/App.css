@@ -1,3 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Yeon+Sung&display=swap");
+
+body {
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nanum Gothic", sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+}
+
+@media (min-width: 650px) {
+  .App {
+    width: 640px;
+  }
+}
+
+@media (max-width: 650px) {
+  .App {
+    width: 90vw;
+  }
+}
+
+#root {
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+}
+
 .App {
-  padding: 20px;
+  min-height: 100vh;
+  padding: 0 20px;
+}
+
+/* My Button */
+.MyButton {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.MyButton_default {
+  background-color: #ececee;
+  color: #000;
+}
+
+.MyButton_positive {
+  background-color: #64c964;
+  color: #fff;
+}
+
+.MyButton_negative {
+  background-color: #fd565f;
+  color: #fff;
+}
+
+/* header */
+header {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+header > div {
+  display: flex;
+}
+
+header .head_text {
+  width: 50%;
+  font-size: 25px;
+  justify-content: center;
+  font-weight: 800;
+}
+
+header .head_btn_left {
+  width: 25%;
+  justify-content: flex-start;
+}
+
+header .head_btn_right {
+  width: 25%;
+  justify-content: flex-end;
 }
