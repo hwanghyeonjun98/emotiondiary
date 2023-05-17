@@ -5,9 +5,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Nanum Gothic", sans-serif;
   min-height: 100vh;
   margin: 0;
+  font-family: "Nanum Gothic", sans-serif;
+  font-size: 14px;
 }
 h1,
 h2,
@@ -46,7 +47,7 @@ h6 {
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
-  font-size: 18px;
+  font-size: 14px;
   white-space: nowrap;
 }
 
@@ -79,7 +80,7 @@ header > div {
 
 header .head_text {
   width: 50%;
-  font-size: 25px;
+  font-size: 24px;
   justify-content: center;
   font-weight: 800;
 }
@@ -92,4 +93,87 @@ header .head_btn_left {
 header .head_btn_right {
   width: 25%;
   justify-content: flex-end;
+}
+
+/* Diary List  */
+.DiaryList .menu_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 30px;
+}
+
+.DiaryList .menu_wrapper .right_col {
+  flex-grow: 1;
+}
+.DiaryList .menu_wrapper .right_col button {
+  width: 100%;
+}
+
+.DiaryList .ControlMenu {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #ececec;
+  cursor: pointer;
+}
+
+/* Diary Item */
+.DiaryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #e2e2e2;
+  cursor: pointer;
+}
+
+.DiaryItem .emotion_img_wrapper {
+  min-width: 120px;
+  height: 80px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.DiaryItem .emotion_img_wrapper img {
+  width: 50%;
+}
+
+.DiaryItem .emotion_img_wrapper_1 {
+  background-color: #64c964;
+}
+
+.DiaryItem .emotion_img_wrapper_2 {
+  background-color: #9dd772;
+}
+
+.DiaryItem .emotion_img_wrapper_3 {
+  background-color: #fdce17;
+}
+
+.DiaryItem .emotion_img_wrapper_4 {
+  background-color: #fd8446;
+}
+
+.DiaryItem .emotion_img_wrapper_5 {
+  background-color: #fd565f;
+}
+
+.DiaryItem .info_wrapper {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.DiaryItem .diary_date {
+  margin-bottom: 5px;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.DiaryItem .btn_wrapper {
+  min-width: 70px;
 }
