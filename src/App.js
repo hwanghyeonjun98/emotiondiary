@@ -117,9 +117,9 @@ const App = () => {
   };
 
   return (
-    <BrowserRouter>
-      <DiaryStateContext.Provider value={data}>
-        <DiaryDispatchContext.Provider value={(onCreate, onEdit, onRemove)}>
+    <DiaryStateContext.Provider value={data}>
+      <DiaryDispatchContext.Provider value={{onCreate, onEdit, onRemove}}>
+        <BrowserRouter>
           <div className="App">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -128,9 +128,9 @@ const App = () => {
               <Route path="/diary/:id" element={<Diary />} />
             </Routes>
           </div>
-        </DiaryDispatchContext.Provider>
-      </DiaryStateContext.Provider>
-    </BrowserRouter>
+        </BrowserRouter>
+      </DiaryDispatchContext.Provider>
+    </DiaryStateContext.Provider>
   );
 };
 
