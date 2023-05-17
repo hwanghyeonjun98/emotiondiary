@@ -25,13 +25,13 @@ const Diary = () => {
         navigate("/", {replace: true});
       }
     }
-  });
+  }, [id, diaryList, navigate]);
 
   if (!data) {
     return <div className="Diary">로딩중입니다...</div>;
   } else {
     const curEmotionData = emotionList.find((it) => parseInt(it.emotion_id) === parseInt(data.emotion));
-
+    console.log(curEmotionData.emotion_img);
     return (
       <div className="Diary">
         <MyHeader

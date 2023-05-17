@@ -7,10 +7,6 @@ import New from "./pages/New";
 import Edit from "./pages/Edit";
 import Diary from "./pages/Diary";
 
-/// components
-import MyButton from "./components/MyButton";
-import MyHeader from "./components/MyHeder";
-
 const reducer = (state, action) => {
   let newState = [];
   switch (action.type) {

@@ -1,15 +1,13 @@
 import {useNavigate} from "react-router-dom";
-import {useContext, useEffect, useRef, useState, useTransition} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 
 import MyButton from "./MyButton";
 import MyHeader from "./MyHeder";
 import EmotionItem from "./EmotionItem";
+
 import {DiaryDispatchContext} from "../App";
 import {getStringDate} from "../util/date";
 import {emotionList} from "../util/emotion";
-
-const env = process.env;
-env.PUBLIC_URL = env.PUBLIC_URL || "";
 
 const DiaryEditor = ({isEdit, originData}) => {
   const {onCreate, onEdit} = useContext(DiaryDispatchContext);

@@ -179,8 +179,6 @@ header .head_btn_right {
 }
 
 /* Diary Editor */
-.DiaryEditor {
-}
 .DiaryEditor section {
   margin-bottom: 40px;
 }
@@ -267,9 +265,6 @@ header .head_btn_right {
 }
 
 /* diary */
-.Diary {
-}
-
 .Diary section {
   display: flex;
   align-items: center;

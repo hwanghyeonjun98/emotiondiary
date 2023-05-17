@@ -3,9 +3,6 @@ import {useContext, useEffect, useState} from "react";
 import {DiaryStateContext} from "../App";
 import DiaryEditor from "../components/DiaryEditor";
 
-const env = process.env;
-env.PUBLIC_URL = env.PUBLIC_URL || "";
-
 const Edit = () => {
   const navigate = useNavigate();
   const {id} = useParams();
