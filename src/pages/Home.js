@@ -20,10 +20,6 @@ const Home = () => {
     }
   }, [diaryList, currDate]);
 
-  useEffect(() => {
-    console.log(data);
-  });
-
   const decreaseMonth = () => {
     setCurrDate(new Date(currDate.getFullYear(), currDate.getMonth() - 1, currDate.getDate()));
   };
