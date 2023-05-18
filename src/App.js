@@ -1,6 +1,6 @@
 import "./App.css";
-import React, {useEffect, useReducer, useRef} from "react";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import React, { useEffect, useReducer, useRef } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
 import New from "./pages/New";
@@ -22,7 +22,7 @@ const reducer = (state, action) => {
       break;
     }
     case "EDIT": {
-      newState = state.map((it) => (it.id === action.data.id ? {...action.data} : it));
+      newState = state.map((it) => (it.id === action.data.id ? { ...action.data } : it));
       break;
     }
     default:
@@ -47,7 +47,7 @@ const App = () => {
 
       if (diaryList.length >= 1) {
         dataId.current = parseInt(diaryList[0].id) + 1;
-        dispatch({type: "INIT", data: diaryList});
+        dispatch({ type: "INIT", data: diaryList });
       }
     }
   }, []);
@@ -71,7 +71,7 @@ const App = () => {
 
   // remove
   const onRemove = (targetId) => {
-    dispatch({type: "REMOVE", targetId});
+    dispatch({ type: "REMOVE", targetId });
   };
 
   //edit
@@ -89,7 +89,7 @@ const App = () => {
 
   return (
     <DiaryStateContext.Provider value={data}>
-      <DiaryDispatchContext.Provider value={{onCreate, onEdit, onRemove}}>
+      <DiaryDispatchContext.Provider value={{ onCreate, onEdit, onRemove }}>
         <BrowserRouter>
           <div className="App">
             <Routes>
