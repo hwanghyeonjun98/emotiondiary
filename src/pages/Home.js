@@ -12,6 +12,11 @@ const Home = () => {
   const headerText = `${currDate.getFullYear()}월 ${currDate.getMonth() + 1}월`;
 
   useEffect(() => {
+    const titleElement = document.querySelector("title");
+    titleElement.innerHTML = `오늘의 감정 일기장`;
+  }, []);
+
+  useEffect(() => {
     if (diaryList.length >= 1) {
       const firstDay = new Date(currDate.getFullYear(), currDate.getMonth(), 1).getTime();
       const lastDay = new Date(currDate.getFullYear(), currDate.getMonth() + 1, 0, 23, 59, 59, 59).getTime();

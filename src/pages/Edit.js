@@ -11,6 +11,11 @@ const Edit = () => {
   const [originData, setOriginData] = useState();
 
   useEffect(() => {
+    const titleElement = document.querySelector("title");
+    titleElement.innerHTML = `오늘의 감정 일기장 - 일기 수정`;
+  }, []);
+
+  useEffect(() => {
     if (diaryList.length >= 1) {
       const targetDiary = diaryList.find((it) => parseInt(it.id) === parseInt(id));
 
@@ -20,7 +25,7 @@ const Edit = () => {
         navigate("/", {replace: true});
       }
     }
-  }, [id, diaryList]);
+  }, [id, diaryList, navigate]);
 
   return <div>{originData && <DiaryEditor isEdit={true} originData={originData} />}</div>;
 };
