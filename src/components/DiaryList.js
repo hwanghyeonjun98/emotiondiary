@@ -26,11 +26,7 @@ const filterOptionList = [
 
 const ControlMenu = React.memo(({ value, onChange, optionList }) => {
   return (
-    <select
-      className="ControlMenu"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    >
+    <select className="ControlMenu" value={value} onChange={(e) => onChange(e.target.value)}>
       {optionList.map((it, idx) => (
         <option key={idx} value={it.value}>
           {it.name}
@@ -48,23 +44,22 @@ const DiaryList = ({ diaryList }) => {
   const getProcessedDiaryList = () => {
     const filterCallback = (item) => {
       if (filter === "good") {
-        return parseInt(item.emotion) <= 3;
+        return parseInt(item.EMOTION) <= 3;
       } else {
-        return parseInt(item.emotion) > 3;
+        return parseInt(item.EMOTION) > 3;
       }
     };
 
     const compare = (a, b) => {
       if (sortType === "latest") {
-        return parseInt(b.date) - parseInt(a.date);
+        return parseInt(b.CREATE_DATE) - parseInt(a.CREATE_DATE);
       } else {
-        return parseInt(a.date) - parseInt(b.date);
+        return parseInt(a.CREATE_DATE) - parseInt(b.CREATE_DATE);
       }
     };
 
     const copyList = JSON.parse(JSON.stringify(diaryList));
-    const filteredList =
-      filter === "all" ? copyList : copyList.filter((it) => filterCallback(it));
+    const filteredList = filter === "all" ? copyList : copyList.filter((it) => filterCallback(it));
     const sortedList = filteredList.sort(compare);
     return sortedList;
   };
@@ -73,27 +68,15 @@ const DiaryList = ({ diaryList }) => {
     <div className="DiaryList">
       <div className="menu_wrapper">
         <div className="left_col">
-          <ControlMenu
-            value={sortType}
-            onChange={setSortType}
-            optionList={sortOptionList}
-          />
-          <ControlMenu
-            value={filter}
-            onChange={setFilter}
-            optionList={filterOptionList}
-          />
+          <ControlMenu value={sortType} onChange={setSortType} optionList={sortOptionList} />
+          <ControlMenu value={filter} onChange={setFilter} optionList={filterOptionList} />
         </div>
         <div className="right_col">
-          <MyButton
-            text={"새 일기 쓰기"}
-            type={"positive"}
-            onClick={() => navigate("/new")}
-          />
+          <MyButton text={"새 일기 쓰기"} type={"positive"} onClick={() => navigate("/new")} />
         </div>
       </div>
       {getProcessedDiaryList().map((it) => (
-        <DiaryItem key={it.id} {...it} />
+        <DiaryItem key={it.ID} {...it} />
       ))}
     </div>
   );

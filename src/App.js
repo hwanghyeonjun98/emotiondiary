@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useEffect, useReducer, useRef } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import axios from "axios";
 
 import Home from "./pages/Home";
 import New from "./pages/New";
@@ -11,7 +12,10 @@ const reducer = (state, action) => {
   let newState = [];
   switch (action.type) {
     case "INIT": {
-      return action.data;
+      const data = action.data;
+      const dateChange = data.map((it, idx) => (it.ID === idx + 1 ? { ...it, CREATE_DATE: new Date(it.CREATE_DATE).getTime() } : ""));
+
+      return dateChange;
     }
     case "CREATE": {
       newState = [action.data, ...state];
@@ -22,14 +26,14 @@ const reducer = (state, action) => {
       break;
     }
     case "EDIT": {
-      newState = state.map((it) => (it.id === action.data.id ? { ...action.data } : it));
+      newState = s  tate.map((it) => (it.id === action.data.id ? { ...action.data } : it));
       break;
     }
     default:
       return state;
   }
 
-  localStorage.setItem("diary", JSON.stringify(newState));
+  // localStorage.setItem("diary", JSON.stringify(newState));
   return newState;
 };
 
@@ -39,7 +43,7 @@ export const DiaryDispatchContext = React.createContext();
 const App = () => {
   const [data, dispatch] = useReducer(reducer, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const localData = localStorage.getItem("diary");
 
     if (localData) {
@@ -50,6 +54,25 @@ const App = () => {
         dispatch({ type: "INIT", data: diaryList });
       }
     }
+  }, []); */
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:3000/api/emotion/getEmotion",
+      responseType: "json",
+    }).then((res) => {
+      const diaryData = res.data;
+
+      if (diaryData) {
+        const diaryList = diaryData.sort((a, b) => parseInt(b.id) - parseInt(a.id));
+
+        if (diaryList.length >= 1) {
+          dataId.current = parseInt(diaryList[0].id) + 1;
+          dispatch({ type: "INIT", data: diaryList });
+        }
+      }
+    });
   }, []);
 
   const dataId = useRef(0);

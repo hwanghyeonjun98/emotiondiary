@@ -1,7 +1,7 @@
-import {useContext, useEffect, useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import MyHeader from "../components/MyHeder";
 import MyButton from "../components/MyButton";
-import {DiaryStateContext} from "../App";
+import { DiaryStateContext } from "../App";
 import DiaryList from "../components/DiaryList";
 
 const Home = () => {
@@ -21,20 +21,25 @@ const Home = () => {
       const firstDay = new Date(currDate.getFullYear(), currDate.getMonth(), 1).getTime();
       const lastDay = new Date(currDate.getFullYear(), currDate.getMonth() + 1, 0, 23, 59, 59, 59).getTime();
 
-      setData(diaryList.filter((it) => firstDay <= it.date && it.date <= lastDay));
+      setData(diaryList.filter((it) => firstDay <= it.CREATE_DATE && it.CREATE_DATE <= lastDay));
     }
   }, [diaryList, currDate]);
 
   const decreaseMonth = () => {
     setCurrDate(new Date(currDate.getFullYear(), currDate.getMonth() - 1, currDate.getDate()));
   };
+
   const increaseMonth = () => {
     setCurrDate(new Date(currDate.getFullYear(), currDate.getMonth() + 1, currDate.getDate()));
   };
 
   return (
     <div>
-      <MyHeader headerText={headerText} leftChild={<MyButton text={"<"} onClick={decreaseMonth} />} rightChild={<MyButton text={">"} onClick={increaseMonth} />} />
+      <MyHeader
+        headerText={headerText}
+        leftChild={<MyButton text={"<"} onClick={decreaseMonth} />}
+        rightChild={<MyButton text={">"} onClick={increaseMonth} />}
+      />
       <DiaryList diaryList={data} />
     </div>
   );
